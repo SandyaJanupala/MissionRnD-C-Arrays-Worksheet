@@ -22,5 +22,22 @@ struct student {
 };
 
 struct student ** topKStudents(struct student *students, int len, int K) {
-	return NULL;
+	struct student * newArr = {0};
+	if (K > len)
+		return NULL;
+	else if (K == 1) {
+		int max = students[0].score;
+		int j;
+		for (int index = 0; index < len; index++) {
+			if (students[index].score > max) {
+				max = students[index].score;
+				j = index;
+			}
+		}
+		newArr[0] = students[j];
+	}
+	else {
+
+	}
+	return &newArr;
 }

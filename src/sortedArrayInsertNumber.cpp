@@ -22,21 +22,24 @@ int * sortedArrayInsertNumber(int *Arr, int len, int num)
 	if (Arr == NULL)
 		return NULL;
 	int index = 0;
-	Arr = (int *)realloc(Arr, len++);
-	if (Arr[0] > num) {
-		index = 0;
+	//Arr = (int *)realloc(Arr, 1 * sizeof(int));
+	if (Arr[0] > num)  {
+		for (int index1 = len; index1 > 0; index1--)
+			Arr[index1] = Arr[index1 - 1];
+		Arr[0] = num;
 	}
-	else if (Arr[len] < num)
+	else if (Arr[len - 1] < num) {
 		Arr[len] = num;
+	}
 	else {
 		for (index = 0; index < len; index++) {
 			if (Arr[index] > num)
 				break;
 		}
+		for (int index1 = len; index1 > index; index1--)
+			Arr[index1] = Arr[index1 - 1];
+		Arr[index] = num;
 	}
-	for (int index1 = len; index1 > index; index1++) {
-		Arr[index1] = Arr[index1 - 1];
-	}
-	Arr[index] = num;
-	return NULL;
+	
+	return Arr;
 }
