@@ -13,8 +13,11 @@ NOTES:
 
 #include <stdio.h>
 
-void * sortedArrayPositionsChange(int *Arr, int len)
-{
+void * sortedArrayPositionsChange(int *Arr, int len) {
+	if (Arr == NULL)
+		return NULL;
+	if (len < 1)
+		return NULL;
 	int temp;
 	//getting the improper indices from front and from back
 	int index1 = 0;
